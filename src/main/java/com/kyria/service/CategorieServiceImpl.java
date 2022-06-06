@@ -10,19 +10,19 @@ import com.kyria.repository.CategorieRepository;
 
 @Service
 public class CategorieServiceImpl implements CategorieSevice {
-	
+
 	@Autowired
-	CategorieRepository categorieRepository;
+	private CategorieRepository categorieRepository;
 
 	@Override
 	public Categorie saveCategorie(Categorie categorie) {
-		
+
 		return categorieRepository.save(categorie);
 	}
 
 	@Override
 	public List<Categorie> getAllCategories() {
-		
+
 		return categorieRepository.findAll();
 	}
 

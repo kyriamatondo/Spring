@@ -11,21 +11,24 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "categories")
 public class Categorie {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "nom")
 	private String nom;
-	
+
 	@Column(name = "description")
 	private String description;
-	
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "categorie")
+	@JsonIgnore
 	private List<Produit> produits;
 
 	public Long getId() {
@@ -60,8 +63,6 @@ public class Categorie {
 		this.produits = produits;
 	}
 
-	
-
 	public Categorie(Long id, String nom, String description, List<Produit> produits) {
 		super();
 		this.id = id;
@@ -71,9 +72,7 @@ public class Categorie {
 	}
 
 	public Categorie() {
-		
+
 	}
-	
-	
 
 }
